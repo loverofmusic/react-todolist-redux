@@ -69,6 +69,10 @@ export default class Todolist extends Component {
   }
 
   handleItemDelete(index){
-    alert(index)
+    const action = {
+      type: "delete_todo_item",
+      index: index
+    }
+    store.dispatch(action);
   }
 }
