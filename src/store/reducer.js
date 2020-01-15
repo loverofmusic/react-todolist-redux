@@ -4,6 +4,7 @@ const defaultState = {
   list: ["1","2"]
 };
 // reducer 可以接受state，但是绝不能修改state
+// reducer必须是纯函数，给定固定输入， 必须有固定输出，（不能写生成日期，定时器，ajax那些），而且不能有副作用
 export default (state = defaultState, action) => {
   if (action.type === CHANGE_INPUT_VALUE) {
     const newState = JSON.parse(JSON.stringify(state));
