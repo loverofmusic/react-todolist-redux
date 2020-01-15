@@ -2,8 +2,7 @@ import React, { Component } from "react";
 import "antd/dist/antd.css";
 import { Input, Button, List } from "antd";
 import store from "./store";
-import {getInputChangeAction, getAddItemAction} from './store/actionCreators';
-import {DELETE_TODO_ITEM} from './store/actionTypes'
+import { getInputChangeAction, getAddItemAction, getDeleteItemAction } from "./store/actionCreators";
 
 export default class Todolist extends Component {
   constructor(props) {
@@ -45,7 +44,9 @@ export default class Todolist extends Component {
           }}
           bordered
           dataSource={this.state.list}
-          renderItem={(item, index) => <List.Item onClick={this.handleItemDelete.bind(this, index)}>{item}</List.Item>}
+          renderItem={(item, index) => (
+            <List.Item onClick={this.handleItemDelete.bind(this, index)}>{item}</List.Item>
+          )}
         />
       </div>
     );
@@ -60,16 +61,13 @@ export default class Todolist extends Component {
     this.setState(store.getState());
   }
 
-  handleBtnChange(){
+  handleBtnChange() {
     const action = getAddItemAction();
     store.dispatch(action);
   }
 
-  handleItemDelete(index){
-    const action = {
-      type: DELETE_TODO_ITEM,
-      index: index
-    }
+  handleItemDelete(index) {
+    const action = getDeleteItemAction(index);
     store.dispatch(action);
   }
 }
