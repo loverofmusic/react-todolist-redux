@@ -1,4 +1,5 @@
 // 无状态组件，没有生命周期，只是一个函数，性能相对于其他组件要 高
+//当我们只需要定义一个UI组件 只需要渲染页面的时候 
 import React from "react";
 import { Input, Button, List } from "antd";
 import "antd/dist/antd.css";

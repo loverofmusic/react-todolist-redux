@@ -4,7 +4,9 @@ import store from "./store";
 import {
   getInputChangeAction,
   getAddItemAction,
-  getDeleteItemAction
+  getDeleteItemAction,
+  getTodoList
+  // initListAction
 } from "./store/actionCreators";
 import TodoListUI from "./TodoListUI";
 
@@ -29,6 +31,11 @@ export default class Todolist extends Component {
         handleItemDelete={this.handleItemDelete}
       ></TodoListUI>
     );
+  }
+
+  componentDidMount(){
+    const action = getTodoList();
+    store.dispatch(action);
   }
 
   handleInputChange(e) {
